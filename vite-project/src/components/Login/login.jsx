@@ -3,14 +3,13 @@ import { useEffect, useState } from "react";
 import Validation from "./Validation";
 
 import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { Paper } from "@mui/material";
-import wallpaper from "./Design/wallpaper.jpg";
+import { Container, Paper } from "@mui/material";
+import "./style.css";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [userData, setUserData] = useState({
@@ -18,6 +17,7 @@ const Login = () => {
     password: "",
   });
 
+  let navigate = useNavigate();
   const [errors, setErrors] = useState({});
 
   const handleChange = (event) => {
@@ -25,6 +25,11 @@ const Login = () => {
       ...userData,
       [event.target.name]: event.target.value,
     });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    navigate("/home");
   };
 
   useEffect(() => {
@@ -35,18 +40,7 @@ const Login = () => {
   }, [userData]);
 
   return (
-    <Container
-      
-      sx={{
-        width: "1920px",
-        height: "900px",
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${wallpaper})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <CssBaseline />
+    <Container>
       <Paper
         elevation={4}
         sx={{
@@ -65,6 +59,7 @@ const Login = () => {
               flexDirection: "column",
               alignItems: "center",
             }}
+            onSubmit={handleSubmit}
           >
             <Typography component="h1" variant="h5">
               Ingresar
@@ -100,23 +95,23 @@ const Login = () => {
                 label="Contraseña"
                 type="password"
                 id="password"
-                autoComplete="current-password"
               />
               <Box>
                 {errors.email && (
                   <Typography id="errorText">{errors.password}</Typography>
                 )}
               </Box>
-
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                disabled={!userData.email || !userData.password}
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Continuar
-              </Button>
+              <Link to={`/home`}>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  disabled={!userData.email || !userData.password}
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  Continuar
+                </Button>
+              </Link>
             </Box>
           </Box>
         </Box>
