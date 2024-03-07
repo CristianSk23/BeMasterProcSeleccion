@@ -13,7 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [userData, setUserData] = useState({
-    email: "",
+    email: "Obligatorio",
     password: "",
   });
 
@@ -101,17 +101,18 @@ const Login = () => {
                   <Typography id="errorText">{errors.password}</Typography>
                 )}
               </Box>
-              <Link to={`/home`}>
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  disabled={!userData.email || !userData.password}
-                  sx={{ mt: 3, mb: 2 }}
-                >
-                  Continuar
-                </Button>
-              </Link>
+
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                component="a"
+                href={`/home`}
+                disabled={Object.keys(errors).length > 0}
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Continuar
+              </Button>
             </Box>
           </Box>
         </Box>
