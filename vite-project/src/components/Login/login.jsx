@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { Container, Paper } from "@mui/material";
 import "./style.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [userData, setUserData] = useState({
@@ -40,14 +40,14 @@ const Login = () => {
   }, [userData]);
 
   return (
-    <Container>
+    <Container sx={{ height: "100vh", paddingTop: "10%", marginLeft: "35%" }}>
       <Paper
         elevation={4}
         sx={{
           width: "550px",
           height: "450px",
           alignItems: "center",
-          paddingTop: "15px",
+          paddingTop: "20px",
           borderRadius: "20px",
         }}
       >
@@ -61,9 +61,7 @@ const Login = () => {
             }}
             onSubmit={handleSubmit}
           >
-            <Typography component="h1" variant="h5">
-              Ingresar
-            </Typography>
+            <Typography variant="h4">Ingresar</Typography>
             <Box component="form" noValidate sx={{ mt: 1 }}>
               <TextField
                 margin="normal"

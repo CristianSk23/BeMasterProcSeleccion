@@ -1,13 +1,4 @@
-import {
-  GET_GENRES,
-  GET_ACTION_GAMES,
-  GET_GAMES,
-  GET_GAMES_CATEGORY,
-  GET_INDIE_GAMES,
-  GET_ADVENTURE_GAMES,
-  GET_RPG_GAMES,
-  GET_STRATEGY_GAMES,
-} from "./actionsTypes";
+import { GET_GENRES, GET_GAMES, GET_GAMES_CATEGORY } from "./actionsTypes";
 import axios from "axios";
 const key = "13e28b0cefb441d399fa357254d9dab9";
 const URLgenres = `https://api.rawg.io/api/genres?key=${key}`;

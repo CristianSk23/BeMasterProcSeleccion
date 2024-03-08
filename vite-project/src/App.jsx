@@ -4,7 +4,6 @@ import Home from "./components/Home/home";
 import NavBar from "./components/NavBar/navBar";
 import ContentCategory from "./components/contentCategory/contentCategory";
 import ContentDetails from "./components/contentDetails/contentDetails";
-import "./App.css";
 
 function App() {
   const { pathname } = useLocation();
@@ -18,7 +17,10 @@ function App() {
           path="/contentCategory/:genreName"
           element={<ContentCategory />}
         />
-        <Route path="/contentDetails/:id" element={<ContentDetails />} />
+        <Route
+          path="/contentDetails/:genreName/:id"
+          element={<ContentDetails />}
+        />
       </Routes>
     </>
   );
