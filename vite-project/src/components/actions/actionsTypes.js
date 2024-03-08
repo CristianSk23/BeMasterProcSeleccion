@@ -1,1 +1,8 @@
-export const GET_GENRES = "GET_GENRES   ";
+export const GET_GENRES = "GET_GENRES";
+export const GET_GAMES = "GET_GAMES";
+export const GET_GAMES_CATEGORY = "GET_GAMES_CATEGORY";
+export const GET_ACTION_GAMES = "GET_ACTION_GAMES";
+export const GET_INDIE_GAMES = "GET_INDIE_GAMES";
+export const GET_ADVENTURE_GAMES = "GET_ADVENTURE_GAMES";
+export const GET_RPG_GAMES = "GET_RPG_GAMES";
+export const GET_STRATEGY_GAMES = "GET_STRATEGY_GAMES";

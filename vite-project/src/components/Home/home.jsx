@@ -2,29 +2,21 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import CardInfo from "../Card/card";
 import { Box, Grid, Typography } from "@mui/material";
-
-//KEY 13e28b0cefb441d399fa357254d9dab9
-const key = "13e28b0cefb441d399fa357254d9dab9";
+import { useDispatch, useSelector } from "react-redux";
+import { getGames, getGenres } from "../actions/actions";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const [games, setGames] = useState([]);
+  const genres = useSelector((state) => state.genres);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchGames = async () => {
-      try {
-        const { data } = await axios(
-          `https://api.rawg.io/api/genres?key=${key}`
-        );
-        let dataGames = data.results.slice(0, 5);
-        setGames(dataGames);
-       
-      } catch (error) {
-        console.error(error.message);
-      }
-    };
-
-    fetchGames();
+    if (genres.length === 0) {
+      dispatch(getGenres());
+      dispatch(getGames());
+    }
   }, []);
+
   return (
     <>
       <Box height="178px">
@@ -41,13 +33,15 @@ const Home = () => {
         justifyContent="center"
         alignItems="center"
       >
-        {games.map((game) => (
-          <Grid item md={2} lg={4} key={game.id}>
-            <CardInfo
-              key={game.id}
-              title={game.name}
-              image={game.image_background}
-            />
+        {genres.map((genre) => (
+          <Grid item md={2} lg={4} key={genre.id}>
+            <Link to={`/contentCategory/${genre.name}`}>
+              <CardInfo
+                key={genre.id}
+                title={genre.name}
+                image={genre.image_background}
+              />
+            </Link>
           </Grid>
         ))}
       </Grid>

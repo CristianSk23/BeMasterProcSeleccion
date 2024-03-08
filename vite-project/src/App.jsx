@@ -2,6 +2,8 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Login from "./components/Login/login";
 import Home from "./components/Home/home";
 import NavBar from "./components/NavBar/navBar";
+import ContentCategory from "./components/contentCategory/contentCategory";
+import ContentDetails from "./components/contentDetails/contentDetails";
 import "./App.css";
 
 function App() {
@@ -10,8 +12,13 @@ function App() {
     <>
       {pathname !== "/" && <NavBar />}
       <Routes>
-        <Route path="/" element={<Login />}></Route>
-        <Route path="/home" element={<Home />}></Route>
+        <Route path="/" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        <Route
+          path="/contentCategory/:genreName"
+          element={<ContentCategory />}
+        />
+        <Route path="/contentDetails/:id" element={<ContentDetails />} />
       </Routes>
     </>
   );
