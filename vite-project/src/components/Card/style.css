@@ -13,5 +13,5 @@
   animation: fadeInAnimation 1s ease forwards;
 }
 .fadeInCard:hover {
-  transform: scale(1.80); 
+  transform: scale(1.8);
 }
